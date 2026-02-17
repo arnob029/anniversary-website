@@ -1,0 +1,756 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  height: 100vh;
+  background: linear-gradient(to bottom, #ffe6f0, #ffffff);
+  overflow: hidden;
+}
+
+/* Love Message Box */
+.love-box {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(255, 192, 203, 0.9);
+  padding: 30px 40px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  animation: fadeIn 2s ease;
+}
+
+.love-box h1 {
+  color: #ff2f92;
+  margin-bottom: 15px;
+}
+
+.love-box p {
+  color: #444;
+  font-size: 18px;
+}
+
+/* Floating Emoji */
+.emoji {
+  position: absolute;
+  font-size: 24px;
+  animation: floatEmoji linear infinite;
+}
+
+@keyframes floatEmoji {
+  from {
+    transform: translateY(100vh);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-10vh);
+    opacity: 0;
+  }
+}
+
+/* Balloons */
+.balloon {
+  position: absolute;
+  bottom: -100px;
+  font-size: 40px;
+  animation: balloonUp linear infinite;
+}
+
+@keyframes balloonUp {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-120vh);
+    opacity: 0;
+  }
+}
+
+/* Popup Message */
+.popup-message {
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #ff69b4;
+  color: white;
+  padding: 15px 25px;
+  border-radius: 30px;
+  display: none;
+  animation: popFade 1s ease;
+}
+
+@keyframes popFade {
+  0% { opacity: 0; transform: translate(-50%, -20px); }
+  100% { opacity: 1; transform: translate(-50%, 0); }
+}
+
+/* Click Me Button */
+.click-me {
+  position: absolute;
+  bottom: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #ff4d6d;
+  color: rgb(241, 238, 238);
+  padding: 18px 30px;
+  border-radius: 40px;
+  font-size: 30px;
+  cursor: pointer;
+  display: none;
+  animation: bounce 1.2s infinite;
+  white-space: nowrap;
+  z-index: 200;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translate(-50%, 0); }
+  50% { transform: translate(-50%, -15px); }
+}
+
+/* ===== CENTER LOVE TEXT ===== */
+.love-box {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: transparent;
+  box-shadow: none;
+  padding: 0;
+  animation: fadeIn 1s ease;
+  z-index: 10;
+  pointer-events: none;
+  width: 90%;
+  text-align: center;
+}
+
+.love-box h1 {
+  font-size: 46px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  background: linear-gradient(to bottom, #b3002d, #ff1f6a);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 2px 10px rgba(179, 0, 45, 0.4);
+}
+
+/* ===== TOP HEADLINE TEXT ===== */
+.anniversary-text {
+  position: absolute;
+  top: 6%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  z-index: 10;
+  width: 90%;
+}
+
+#anniversaryMain {
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  background: linear-gradient(to bottom, #ff0033, #c2002f);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: headlinePop 2.2s ease forwards, shimmer 3s infinite;
+}
+
+#anniversaryLove {
+  font-size: 30px;
+  font-weight: 700;
+  background: linear-gradient(to bottom, #c2002f, #ff4d88);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: slideDown 2.2s ease forwards, shimmer 3s infinite;
+  animation-delay: 1.5s;
+  opacity: 0;
+}
+
+@keyframes headlinePop {
+  from { opacity: 0; transform: translateY(-15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes shimmer {
+  0% { filter: brightness(1); }
+  50% { filter: brightness(1.15); }
+  100% { filter: brightness(1); }
+}
+
+/* ===== CROSS RAIL NAME SYSTEM ===== */
+.cross-rail {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 50;
+}
+
+.rail-name {
+  position: absolute;
+  font-size: 36px;
+  font-weight: 700;
+  background: linear-gradient(to bottom, #8b001a, #ff2f6f);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  opacity: 0;
+  white-space: nowrap;
+  z-index: 60;
+}
+
+.arnob-rail {
+  position: absolute;
+  left: -300px;
+  top: 60%;
+  transform: translateY(-10%);
+  animation: arnobMove 6s ease-out forwards;
+  z-index: 20;
+}
+
+.adrita-rail {
+  bottom: -120px;
+  right: -200px;
+  animation: adritaMove 5s linear forwards;
+}
+
+@keyframes arnobMove {
+  from { left: -250px; opacity: 1; }
+  to { left: 10%; opacity: 1; }
+}
+
+@keyframes adritaMove {
+  to {
+    bottom: 60%;
+    right: 5%;
+    transform: translate(0%, 0%);
+    opacity: 1;
+  }
+}
+
+.dissolve {
+  animation: dissolve 2s forwards;
+}
+
+@keyframes dissolve {
+  to { opacity: 0; transform: scale(1.4); }
+}
+
+/* ===== ROSE PETALS ===== */
+.petal {
+  position: absolute;
+  font-size: 24px;
+  animation: petalFly linear forwards;
+}
+
+@keyframes petalFly {
+  from {
+    transform: translate(50vw, 50vh) scale(0.5);
+    opacity: 1;
+  }
+  to {
+    transform: translate(
+      calc(100vw * (var(--x))),
+      calc(100vh * (var(--y)))
+    ) rotate(720deg) scale(1.2);
+    opacity: 0;
+  }
+}
+
+.petal-container {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 100;
+}
+
+/* =========================
+   SECOND PAGE (LOVE LETTER)
+========================= */
+.second-page {
+  position: fixed;
+  inset: 0;
+  background-color: #fae1dd;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  overflow: hidden;
+}
+
+.second-page .container {
+  position: relative;
+  z-index: 2;
+}
+
+.valentines {
+  position: relative;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+.envelope {
+  width: 460px;
+  height: 340px;
+  background: #f08080;
+  position: relative;
+  border-radius: 8px;
+  box-shadow: 0 25px 50px rgba(0,0,0,0.35);
+}
+
+.card {
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  width: 430px;
+  height: 410px;
+  background: #fffdf8;
+  border-radius: 10px;
+  box-shadow: 0 18px 40px rgba(0,0,0,0.45);
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.card-content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.text {
+  padding: 20px;
+  font-family: Georgia, serif;
+  font-size: 18px;
+  color: #a5093d;
+  text-align: center;
+}
+
+/* ================= INNER PAGE ================= */
+.inner-page {
+  position: absolute;
+  left: 0;
+  bottom: -10px;
+  width: 100%;
+  max-width: 100%;
+  background: #faefef;
+  padding: 25px;
+  font-family: 'Cormorant Garamond', serif !important;
+  font-weight: 600;
+  font-size: 22px;
+  letter-spacing: 1.5px;
+  color: #050103;
+  transform: translateY(100%);
+  transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  border-radius: 12px 12px 0 0;
+  box-shadow: 0 -12px 30px rgba(0, 0, 0, 0.35);
+  height: 100%;
+  overflow-y: auto;
+}
+
+.inner-page p {
+  font-family: 'Great Vibes', cursive !important;
+  white-space: pre-line;
+  line-height: 1.6;
+}
+
+.card.open .inner-page {
+  transform: translateY(0);
+  bottom: 0;
+  transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.next-page-btn {
+  position: absolute;
+  bottom: 30px;
+  right: 40px;
+  padding: 14px 28px;
+  background: linear-gradient(135deg,#ec608a,#e2a7b2);
+  color: #fff;
+  border-radius: 30px;
+  cursor: pointer;
+  animation: bounceBtn 1.6s infinite;
+  font-size: 18px;
+  z-index: 10;
+}
+
+@keyframes bounceBtn {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.love-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.love-container span {
+  position: absolute;
+  bottom: -60px;
+  font-size: 20px;
+  opacity: 0.8;
+  animation: romanticFloat linear forwards;
+  filter: drop-shadow(0 0 8px rgba(255, 0, 100, 0.7));
+}
+
+@keyframes romanticFloat {
+  0% { transform: translateY(0) scale(0.8); opacity: 0; }
+  20% { opacity: 1; }
+  100% { transform: translateY(-120vh) scale(1.3); opacity: 0; }
+}
+
+/* ===== THIRD PAGE ===== */
+.third-page {
+  position: fixed;
+  inset: 0;
+  background: #fac6c6;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.memory-title {
+  position: absolute;
+  color: #9e0420;
+  font-size: 36px;
+  font-weight: bold;
+  text-align: center;
+  z-index: 5;
+  text-shadow: 0 0 20px rgba(161, 14, 51, 0.623);
+  top: 3%;
+  width: 90%;
+  left: 50%;
+  transform: translateX(-50%);
+  line-height: 1.5;
+  pointer-events: none;
+}
+
+/* ===== POLAROID STACK ===== */
+.memory-circle {
+  position: relative;
+  width: 220px;
+  height: 260px;
+  margin-top: 220px;
+}
+
+.memory-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 2px;
+  box-shadow: none;
+  opacity: 1;
+}
+
+.falling-petal {
+  position: absolute;
+  top: -50px;
+  pointer-events: none;
+  animation: falling linear forwards;
+  z-index: 1;
+}
+
+@keyframes falling {
+  0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+}
+
+/* =========================
+   GLOBAL PAGE FIX
+========================= */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+.second-page,
+.third-page {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 50;
+  background: linear-gradient(to bottom, #ffe6f0, #ffffff);
+}
+
+.show-page {
+  display: flex !important;
+}
+
+/* Back Button */
+.back-btn {
+  position: fixed;
+  bottom: 30px;
+  left: 40px;
+  padding: 14px 28px;
+  background: linear-gradient(135deg, #ec608a, #e2a7b2);
+  color: #fff;
+  border-radius: 30px;
+  cursor: pointer;
+  animation: bounceBtn 1.6s infinite;
+  font-size: 18px;
+  z-index: 10000;
+}
+
+/* =========================
+   MOBILE RESPONSIVE FIX
+========================= */
+
+/* ---- Small phones (max 480px) ---- */
+@media (max-width: 480px) {
+
+  #anniversaryMain { font-size: 20px; }
+  #anniversaryLove { font-size: 17px; }
+
+  .love-box h1 { font-size: 22px; }
+
+  .click-me {
+    font-size: 18px;
+    padding: 12px 22px;
+    bottom: 12%;
+  }
+
+  .rail-name { font-size: 22px; }
+
+  /* SECOND PAGE */
+  .second-page {
+    background-color: #fae1dd;
+    overflow: hidden;
+  }
+
+  .second-page .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 95vw;
+  }
+
+  .second-page .valentines {
+    position: relative;
+    width: 88vw;
+    max-width: 340px;
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .envelope {
+    width: 88vw;
+    max-width: 340px;
+    height: 210px;
+  }
+
+  .card {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    width: calc(88vw - 20px);
+    max-width: 320px;
+    height: 290px;
+  }
+
+  .text { font-size: 14px; padding: 12px; }
+
+  .inner-page {
+    font-size: 14px;
+    padding: 12px;
+    letter-spacing: 0.8px;
+    height: 100%;
+    overflow-y: auto;
+  }
+
+  .next-page-btn {
+    position: fixed;
+    bottom: 18px;
+    right: 18px;
+    font-size: 14px;
+    padding: 10px 20px;
+  }
+
+  /* THIRD PAGE */
+  .memory-title {
+  font-size: 28px;
+  top: 15%;
+  line-height: 1.4;
+}
+
+  .memory-circle {
+  width: 160px;
+  height: 195px;
+  margin-top: 140px;
+}
+
+.memory-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+}
+
+  .back-btn {
+    bottom: 18px;
+    left: 18px;
+    font-size: 14px;
+    padding: 10px 20px;
+  }
+}
+
+/* ---- Medium phones (481px – 768px) ---- */
+@media (min-width: 481px) and (max-width: 768px) {
+
+  #anniversaryMain { font-size: 26px; }
+  #anniversaryLove { font-size: 22px; }
+
+  .love-box h1 { font-size: 28px; }
+
+  .click-me {
+    font-size: 22px;
+    padding: 14px 26px;
+    bottom: 13%;
+  }
+
+  .rail-name { font-size: 28px; }
+
+  /* SECOND PAGE */
+  .second-page { overflow: hidden; }
+
+  .second-page .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 95vw;
+  }
+
+  .second-page .valentines {
+    position: relative;
+    width: 88vw;
+    max-width: 420px;
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .envelope {
+    width: 88vw;
+    max-width: 420px;
+    height: 255px;
+  }
+
+  .card {
+    position: absolute;
+    bottom: 12px;
+    left: 12px;
+    width: calc(88vw - 24px);
+    max-width: 395px;
+    height: 340px;
+  }
+
+  .text { font-size: 16px; padding: 16px; }
+
+  .inner-page {
+    font-size: 17px;
+    padding: 18px;
+    letter-spacing: 1px;
+    height: 100%;
+    overflow-y: auto;
+  }
+
+  .next-page-btn {
+    position: fixed;
+    bottom: 22px;
+    right: 22px;
+    font-size: 16px;
+    padding: 12px 24px;
+  }
+
+  /* THIRD PAGE */
+  .memory-title {
+    font-size: 22px;
+    top: 6%;
+  }
+
+  .memory-circle {
+  width: 185px;
+  height: 225px;
+  margin-top: 100px;
+}
+
+.memory-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+}
+
+  .back-btn {
+    bottom: 22px;
+    left: 22px;
+    font-size: 16px;
+    padding: 12px 24px;
+  }
+}
+
+/* ---- Tablets (769px – 1024px) ---- */
+@media (min-width: 769px) and (max-width: 1024px) {
+
+  #anniversaryMain { font-size: 30px; }
+  #anniversaryLove { font-size: 24px; }
+
+  .love-box h1 { font-size: 34px; }
+
+  .click-me {
+    font-size: 24px;
+    padding: 15px 28px;
+  }
+
+  .envelope {
+    width: 420px;
+    height: 300px;
+  }
+
+  .card {
+    width: 390px;
+    height: 370px;
+  }
+
+  .memory-title {
+    font-size: 28px;
+    top: 7%;
+  }
+
+  .memory-circle {
+  width: 190px;
+  height: 230px;
+  margin-top: 110px;
+}
+
+.memory-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+}
