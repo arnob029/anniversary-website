@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script>
+    if (window.innerWidth <= 768) {
+      window.location.href = "mobile/index.html";
+    } else {
+      window.location.href = "pc/index.html";
+    }
+  </script>
+</head>
+<body>
+</body>
+</html>
